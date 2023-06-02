@@ -28,7 +28,7 @@ pipeline {
             steps {
                 // sh 'mvn test'
                 // withSonarQubeEnv("${SONARSERVER}") {
-                withSonarQubeEnv("${SONARSERVER}", envOnly: true) {
+                withSonarQubeEnv("${SONARSERVER}") {
                     // Optionally use a Maven environment you've configured already
                     // withMaven(maven:'Maven 3.5') {
                     sh 'mvn clean package sonar:sonar'
