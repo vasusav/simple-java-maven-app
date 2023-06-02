@@ -22,7 +22,7 @@ pipeline {
             }
         }
         stage('build && SonarQube analysis') {
-            steps {
+            // steps {
                 // sh 'mvn test'
                 // withSonarQubeEnv("${SONARSERVER}") {
                 withSonarQubeEnv('My SonarQube Server', envOnly: true) {
@@ -31,7 +31,7 @@ pipeline {
                     sh 'mvn clean package sonar:sonar'
                     }
                 // }
-            }
+            // }
         }
     }
 }
