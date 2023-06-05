@@ -34,7 +34,10 @@ pipeline {
         stage('jfrog') {
             steps {
                 withSonarQubeEnv("${SONARSERVER}") {
-                    sh 'apt'
+                    sh 'command -v apt-get'
+                    sh 'command -v apk'
+                    sh 'command -v dnf'
+                    sh 'command -v zypper'
                     }
             }
         }
