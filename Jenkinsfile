@@ -34,7 +34,7 @@ pipeline {
         stage('jfrog') {
             steps {
                 withSonarQubeEnv("${SONARSERVER}") {
-                    sh 'cat /etc/os-release'
+                    sh 'ls /'
                     }
             }
         }
