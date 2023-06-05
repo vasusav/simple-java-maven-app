@@ -34,7 +34,7 @@ pipeline {
         stage('jfrog') {
             steps {
                 withSonarQubeEnv("${SONARSERVER}") {
-                    sh 'ls /etc'
+                    sh 'apt'
                     }
             }
         }
