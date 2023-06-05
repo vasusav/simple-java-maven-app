@@ -34,7 +34,6 @@ pipeline {
         stage('jfrog') {
             steps {
                 withSonarQubeEnv("${SONARSERVER}") {
-                    sh 'command -v dnf'
                     sh 'command -v zypper'
                     }
             }
