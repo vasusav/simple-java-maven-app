@@ -26,14 +26,16 @@ pipeline {
         }
         stage('build && SonarQube analysis') {
             steps {
-                // sh 'mvn test'
-                // withSonarQubeEnv("${SONARSERVER}") {
                 withSonarQubeEnv("${SONARSERVER}") {
-                    // Optionally use a Maven environment you've configured already
-                    // withMaven(maven:'Maven 3.5') {
                     sh 'mvn clean package sonar:sonar'
                     }
-                // }
+            }
+        }
+        stage('jfrog') {
+            steps {
+                withSonarQubeEnv("${SONARSERVER}") {
+                    sh 'cat /etc/os-release'
+                    }
             }
         }
     }
