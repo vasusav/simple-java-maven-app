@@ -4,6 +4,19 @@ pipeline {
         SONARSERVER = 'sonarserver'
     }
     stages {
+        stage ('Checkout') {
+            steps {
+                git credentialsId: 'github', url: 'https://github.com/vasusav/simple-java-maven-app.git'
+            }
+        }
+    }
+    stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
+    }    
+    
+    stages {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv("${SONARSERVER}") {
@@ -11,10 +24,7 @@ pipeline {
                     }
             }
         }
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
+      
         }
         stage('Test') {
             steps {
